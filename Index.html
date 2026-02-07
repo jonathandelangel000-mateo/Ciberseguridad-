@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciberseguridad - Centro Universitario José Vasconcelos</title>
+    <style>
+        /* --- ESTILOS GENERALES (Tema Oscuro Ciberseguridad) --- */
+        :root {
+            --fondo: #0f172a;       /* Azul muy oscuro */
+            --tarjeta: #1e293b;     /* Azul grisáceo */
+            --texto: #e2e8f0;       /* Blanco humo */
+            --acento: #38bdf8;      /* Azul neón brillante */
+            --peligro: #ef4444;     /* Rojo para alertas */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+        }
+
+        /* --- ENCABEZADO --- */
+        header {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--acento);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--acento);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        header h2 {
+            margin: 5px 0 0 0;
+            font-size: 1.2rem;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- INTRODUCCIÓN --- */
+        .intro-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(30, 41, 59, 0.5); /* Fondo semitransparente */
+            border: 1px solid #334155;
+        }
+
+        .intro-section h2 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-section p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #cbd5e1;
+        }
+
+        .highlight {
+            color: var(--acento);
+            font-weight: bold;
+        }
+
+        /* --- GRID DE BOTONES (TARJETAS) --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo automático */
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--tarjeta);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none; /* Para cuando sean enlaces <a> */
+            display: block;
+        }
+
+        /* Efecto al pasar el mouse */
+        .card:hover {
+            transform: translateY(-10px); /* Sube un poco */
+            border-color: var(--acento);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.3); /* Resplandor neón */
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            border-top: 1px solid #334155;
+        }
+
+        /* Ajuste para móviles */
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.4rem; }
+            .intro-section h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Centro Universitario José Vasconcelos</h1>
+        <h2>Ingeniería en Sistemas Computacionales (ISC)</h2>
+        <p>Reynosa, Tamaulipas</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="intro-section">
+            <h2>El Peligro Invisible</h2>
+            <p>
+                Vivimos conectados, pero rara vez nos detenemos a pensar en quién nos observa desde las sombras digitales. 
+                No proteger nuestros datos es como dejar la puerta de casa abierta de par en par. 
+                En internet habitan <span class="highlight">amenazas silenciosas</span> diseñadas para robar tu identidad, 
+                tu dinero y tu tranquilidad. Conocer al enemigo es el primer paso para defenderse.
+            </p>
+        </section>
+
+        <div class="menu-grid">
+            
+            <a href="#" class="card" onclick="alert('Aquí irá la página de Phishing')">
+                <span class="card-icon">🎣</span>
+                <h3>Phishing</h3>
+                <p>El arte del engaño para robar tus contraseñas.</p>
+            </a>
+
+            <a href="#" class="card" onclick="alert('Aquí irá la página de Malware')">
+                <span class="card-icon">🦠</span>
+                <h3>Malware</h3>
+                <p>Software malicioso, virus y troyanos.</p>
+            </a>
+
+            <a href="#" class="card" onclick="alert('Aquí irá la página de Ing. Social')">
+                <span class="card-icon">🎭</span>
+                <h3>Ingeniería Social</h3>
+                <p>Manipulación psicológica para obtener información.</p>
+            </a>
+
+            <a href="#" class="card" onclick="alert('Aquí irá la página de Spam')">
+                <span class="card-icon">📧</span>
+                <h3>Spam</h3>
+                <p>Correo basura masivo y no deseado.</p>
+            </a>
+
+            <a href="#" class="card" onclick="alert('Aquí irá la página de Spim')">
+                <span class="card-icon">💬</span>
+                <h3>Spim</h3>
+                <p>Spam a través de aplicaciones de mensajería instantánea.</p>
+            </a>
+
+            <a href="#" class="card" onclick="alert('Aquí irá la página de Ransomware')">
+                <span class="card-icon">🔒</span>
+                <h3>Ransomware</h3>
+                <p>Secuestro de datos a cambio de un rescate monetario.</p>
+            </a>
+
+             <a href="#" class="card" onclick="alert('Aquí irá la página de Robo de Identidad')">
+                <span class="card-icon">🆔</span>
+                <h3>Robo de Identidad</h3>
+                <p>Cuando alguien se hace pasar por ti ilegalmente.</p>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Proyecto Educativo de Ciberseguridad - ISC</p>
+    </footer>
+
+</body>
+</html>
