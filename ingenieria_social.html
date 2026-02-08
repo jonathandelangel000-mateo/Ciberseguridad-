@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingeniería Social - El Arte del Engaño</title>
+    <style>
+        /* --- ESTILOS COMPARTIDOS (Tema Oscuro) --- */
+        :root {
+            --fondo: #0f172a;
+            --tarjeta: #1e293b;
+            --texto: #e2e8f0;
+            --acento: #8b5cf6;       /* Violeta Psicológico */
+            --alerta: #f59e0b;       /* Naranja */
+            --borde: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* --- ENCABEZADO --- */
+        h1 {
+            color: var(--acento);
+            border-bottom: 2px solid var(--acento);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .icono-grande { font-size: 2.5rem; }
+
+        /* --- CAJAS DE INFORMACIÓN --- */
+        .info-box {
+            background-color: var(--tarjeta);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--acento);
+            font-size: 1.1rem;
+        }
+
+        /* --- TÁCTICAS (TARJETAS) --- */
+        .tactics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tactic-card {
+            background: linear-gradient(145deg, #1e293b, #172033);
+            border: 1px solid var(--borde);
+            padding: 20px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .tactic-title {
+            color: var(--acento);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- EJEMPLO DE DIÁLOGO --- */
+        .dialogo {
+            background-color: #2d2a38;
+            padding: 15px;
+            border-radius: 8px;
+            font-style: italic;
+            border-left: 3px solid #ccc;
+            margin-top: 10px;
+            color: #a78bfa;
+        }
+
+        /* --- CEREBRO HUMANO (DEFENSA) --- */
+        .defense-section {
+            background-color: rgba(139, 92, 246, 0.1); /* Violeta muy suave */
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px dashed var(--acento);
+            text-align: center;
+        }
+
+        .defense-steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .step {
+            background: var(--fondo);
+            padding: 15px;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid var(--acento);
+            font-weight: bold;
+        }
+
+        /* --- BOTÓN VOLVER --- */
+        .btn-volver {
+            display: inline-block;
+            background-color: var(--tarjeta);
+            color: var(--acento);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: 1px solid var(--acento);
+            transition: 0.3s;
+            margin-top: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--acento);
+            color: #fff;
+            box-shadow: 0 0 15px var(--acento);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><span class="icono-grande">🎭</span> Ingeniería Social</h1>
+
+        <div class="info-box">
+            <p>
+                <strong>El "Hackeo" Humano.</strong><br>
+                En lugar de buscar grietas en el software, la Ingeniería Social busca grietas en la mente humana. Los atacantes manipulan tus emociones (miedo, curiosidad, avaricia o ganas de ayudar) para que tú mismo les entregues las llaves de acceso.
+            </p>
+        </div>
+
+        <h2>Las 3 Tácticas Maestras:</h2>
+        
+        <div class="tactics-grid">
+            
+            <div class="tactic-card">
+                <div class="tactic-title">🕵️ Pretexting (El Pretexto)</div>
+                <p>El atacante crea un escenario falso y se hace pasar por alguien con autoridad (Soporte Técnico, RRHH, Policía).</p>
+                <div class="dialogo">
+                    "Hola, soy de Sistemas. Estamos actualizando el servidor y necesito tu contraseña para que no pierdas tus archivos."
+                </div>
+            </div>
+
+            <div class="tactic-card">
+                <div class="tactic-title">💿 Baiting (El Cebo)</div>
+                <p>Se aprovechan de tu curiosidad. Dejan un dispositivo infectado en un lugar visible esperando que lo uses.</p>
+                <div class="dialogo">
+                    *Encuentras una USB en el estacionamiento con una etiqueta que dice "Sueldos Ejecutivos 2026". ¿La conectas?*
+                </div>
+            </div>
+
+            <div class="tactic-card">
+                <div class="tactic-title">🎁 Quid Pro Quo (Algo por Algo)</div>
+                <p>Te ofrecen un beneficio o "regalo" a cambio de información o acceso.</p>
+                <div class="dialogo">
+                    "Gana un iPhone 15 participando en nuestra encuesta. Solo necesitamos tu fecha de nacimiento y correo corporativo."
+                </div>
+            </div>
+
+        </div>
+
+        <div class="defense-section">
+            <h2 style="color: #fff; margin-top: 0;">🧠 Tu Mente es el Mejor Antivirus</h2>
+            <p>Si algo te genera una emoción fuerte (miedo urgente o emoción por un premio), detente.</p>
+            
+            <div class="defense-steps">
+                <div class="step">
+                    <span style="font-size: 1.5rem;">✋</span>
+                    DETENTE
+                </div>
+                <div class="step">
+                    <span style="font-size: 1.5rem;">👀</span>
+                    OBSERVA
+                </div>
+                <div class="step">
+                    <span style="font-size: 1.5rem;">🤔</span>
+                    PIENSA
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 0.9rem;">
+                <em>"Ningún departamento de soporte técnico serio te pedirá tu contraseña por teléfono."</em>
+            </p>
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-volver">⬅ Regresar al Menú</a>
+        </center>
+    </div>
+
+</body>
+</html>
+
