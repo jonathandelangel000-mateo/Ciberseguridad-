@@ -165,9 +165,9 @@
                 Todos tus documentos, fotos y bases de datos han sido bloqueados con una clave militar.
                 Nadie puede recuperarlos excepto nosotros.
             </p>
-            <p>Tienes <strong>1 hora</strong> para realizar el pago o tus archivos serán eliminados para siempre.</p>
+            <p>Tienes <strong>1 minuto</strong> para realizar el pago o tus archivos serán eliminados para siempre.</p>
             
-            <div class="cuenta-regresiva">01:00:00</div>
+            <div class="cuenta-regresiva">00:01:00</div>
             
             <p style="font-size: 0.8rem; margin-top: 20px;">
                 Precio del rescate: <strong>$1,000 pesos</strong>
@@ -201,32 +201,35 @@
     </div>
 
     <script>
-        // Configuración: 1 hora (1 * 60 minutos * 60 segundos)
-        let tiempoRestante = 1 * 60 * 60; 
+    // Configuración: 1 minuto (60 segundos)
+    let tiempoRestante = 60; 
 
-        const reloj = document.querySelector('.cuenta-regresiva');
+    const reloj = document.querySelector('.cuenta-regresiva');
 
-        function actualizarReloj() {
-            const horas = Math.floor(tiempoRestante / 3600);
-            const minutos = Math.floor((tiempoRestante % 3600) / 60);
-            const segundos = tiempoRestante % 60;
+    function actualizarReloj() {
+        const horas = Math.floor(tiempoRestante / 3600);
+        const minutos = Math.floor((tiempoRestante % 3600) / 60);
+        const segundos = tiempoRestante % 60;
 
-            // Formato HH:MM:SS
-            reloj.textContent = 
-                `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+        // Formato HH:MM:SS
+        reloj.textContent = 
+            `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
 
-            if (tiempoRestante > 0) {
-                tiempoRestante--;
-            } else {
-                reloj.textContent = "00:00:00";
-                reloj.style.color = "red";
-                alert("¡TIEMPO AGOTADO! Tus archivos han sido eliminados.");
-            }
+        if (tiempoRestante > 0) {
+            tiempoRestante--;
+        } else {
+            reloj.textContent = "00:00:00";
+            reloj.style.color = "red";
+            // He añadido este efecto para que parpadee al llegar a cero
+            reloj.style.animation = "palpito 0.5s infinite";
+            alert("¡TIEMPO AGOTADO! Tus archivos han sido eliminados.");
         }
+    }
 
-        setInterval(actualizarReloj, 1000);
-        actualizarReloj(); 
-    </script>
+    setInterval(actualizarReloj, 1000);
+    actualizarReloj(); 
+</script>
+
 
 </body>
 </html>
