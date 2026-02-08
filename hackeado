@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR DEL SISTEMA</title>
+    <style>
+        /* --- Configuración base --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace; /* Fuente tipo hacker/terminal */
+            overflow: hidden; /* Evita el scroll */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Fondo de Interferencia Estática --- */
+        .static-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Detrás del texto */
+            opacity: 0.4; /* Un poco transparente */
+            /* Crea un patrón de ruido con gradientes */
+            background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px 2500px,
+                        repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 60% 60%/2500px 2500px;
+            background-blend-mode: difference;
+            animation: staticAnim 0.2s infinite alternate;
+        }
+
+        /* Animación para mover el ruido */
+        @keyframes staticAnim {
+            0% { background-position: 0 0, 10px 10px; }
+            100% { background-position: -10px -20px, -5px -5px; }
+        }
+
+        /* Líneas de escaneo para efecto de pantalla vieja/rota */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2));
+            background-size: 100% 4px;
+            pointer-events: none; /* Permite dar clic a través de ellas */
+        }
+
+        /* --- Texto Principal con Efecto Glitch --- */
+        .glitch-container {
+            text-align: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .main-text {
+            font-size: 3rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            /* Efecto de aberración cromática (colores separados) */
+            text-shadow: 
+                2px 0 0 rgba(255,0,0,0.7), 
+                -2px 0 0 rgba(0,255,255,0.7);
+            animation: glitchSkew 0.5s infinite linear alternate-reverse;
+        }
+
+        /* Animación del texto principal */
+        @keyframes glitchSkew {
+            0% { transform: skewX(0deg); }
+            10% { transform: skewX(-5deg); text-shadow: 3px 0 0 red, -3px 0 0 cyan; }
+            20% { transform: skewX(2deg); }
+            30% { transform: skewX(0deg); }
+            40% { transform: skewX(5deg); text-shadow: -3px 0 0 red, 3px 0 0 cyan;}
+            50% { transform: skewX(0deg); }
+            100% { transform: skewX(0deg); }
+        }
+
+        /* --- Texto secundario (Caíste) --- */
+        .sub-text {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #aaa;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* --- Botón de Salir --- */
+        .exit-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 25px;
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #fff;
+            text-decoration: none; /* Quita el subrayado del enlace */
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Courier New', Courier, monospace;
+            z-index: 20; /* Asegura que esté encima de todo */
+            transition: 0.3s;
+        }
+
+        .exit-btn:hover {
+            background-color: #fff;
+            color: #000;
+            cursor: pointer;
+        }
+
+        /* Ajuste para móviles */
+        @media (max-width: 600px) {
+            .main-text { font-size: 2rem; }
+            .sub-text { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="static-noise"></div>
+    <div class="scanlines"></div>
+
+    <div class="glitch-container">
+        <div class="main-text">HAS SIDO HACKEADO</div>
+        <div class="sub-text">
+            CAÍSTE <span class="arrow">→</span>
+        </div>
+    </div>
+
+    <a href="#" class="exit-btn" onclick="alert('¡Es una broma! No has sido hackeado de verdad.'); return false;">SALIR</a>
+
+</body>
+</html>
+
