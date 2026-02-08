@@ -219,6 +219,175 @@
                 <h3>Robo de Identidad</h3>
                 <p>Cuando alguien se hace pasar por ti ilegalmente.</p>
             </a>
+            <div id="modal-acceso" style="
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000; z-index: 10000;
+    display: flex; justify-content: center; align-items: center; flex-direction: column;
+    font-family: 'Courier New', monospace;
+">
+    <div style="border: 2px solid #0f0; padding: 40px; text-align: center; background: rgba(0, 20, 0, 0.9); box-shadow: 0 0 50px rgba(0, 255, 0, 0.2);">
+        <h2 style="color: #0f0; margin-top: 0; text-shadow: 0 0 10px #0f0;">⚠️ ACCESO RESTRINGIDO ⚠️</h2>
+        <p style="color: #fff;">Identifícate para entrar al sistema:</p>
+        <input type="text" id="input-nombre" placeholder="Nombre clave..." style="background: #000; border: 1px solid #0f0; color: #0f0; padding: 10px; font-size: 1.2rem; text-align: center; outline: none; margin-bottom: 20px;">
+        <br>
+        <button onclick="concederAcceso()" style="background: #0f0; color: #000; border: none; padding: 10px 30px; font-weight: bold; cursor: pointer;">ENTRAR >></button>
+    </div>
+</div>
+
+<div id="modal-bitacora" style="
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); z-index: 9999;
+    justify-content: center; align-items: center;
+">
+    <div style="
+        width: 80%; max-width: 600px; height: 70%;
+        border: 2px solid #0f0; background: #000;
+        display: flex; flex-direction: column;
+        font-family: 'Courier New', monospace;
+    ">
+        <div style="background: #0f0; color: #000; padding: 10px; font-weight: bold; display: flex; justify-content: space-between;">
+            <span>>> SYSTEM_LOG.txt</span>
+            <span style="cursor: pointer;" onclick="document.getElementById('modal-bitacora').style.display='none'">[X] CERRAR</span>
+        </div>
+        
+        <div id="lista-visitantes" style="
+            flex: 1; overflow-y: auto; padding: 20px; color: #0f0;
+            text-align: left; font-size: 0.9rem;
+        ">
+            Cargando datos del servidor...
+        </div>
+    </div>
+</div>
+
+<div id="terminal-visitas" onclick="abrirBitacora()" style="
+    position: fixed; bottom: 10px; right: 10px;
+    background-color: rgba(0, 0, 0, 0.9); border: 1px solid #0f0; color: #0f0;
+    padding: 5px 10px; font-family: 'Courier New', monospace; font-size: 0.8rem;
+    border-radius: 5px; z-index: 9000; cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5); display: none;
+">
+    <span style="animation: parpadeo 1s infinite;">●</span> 
+    AGENTE: <strong id="nombre-mostrado" style="color: #fff;">...</strong> | 
+    VISITAS: <strong id="numero-visitas" style="color: #fff; text-decoration: underline;">0</strong>
+    <span style="font-size: 0.7rem; color: #aaa;">(Ver Log)</span>
+</div>
+
+<style>
+    @keyframes parpadeo { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+    /* Scrollbar hacker */
+    #lista-visitantes::-webkit-scrollbar { width: 8px; }
+    #lista-visitantes::-webkit-scrollbar-thumb { background: #0f0; }
+    #lista-visitantes::-webkit-scrollbar-track { background: #000; }
+</style>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, getCountFromServer, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    // --- TUS CLAVES (NO TOCAR) ---
+    const firebaseConfig = {
+      apiKey: "AIzaSyB0ahP8K53dm8BIRhjXYxCbSJ8sNfQi-NI",
+      authDomain: "refugio-de-patitas.firebaseapp.com",
+      projectId: "refugio-de-patitas",
+      storageBucket: "refugio-de-patitas.firebasestorage.app",
+      messagingSenderId: "5921473252",
+      appId: "1:5921473252:web:16f18c4c7cf1ad1509e2f1"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const coleccion = collection(db, "visitas_ciberseguridad");
+
+    // --- 1. ENTRAR AL SITIO ---
+    window.concederAcceso = async function() {
+        const input = document.getElementById('input-nombre');
+        const nombre = input.value.trim();
+
+        if (nombre === "") { alert("⚠️ ERROR: Nombre requerido."); return; }
+
+        document.getElementById('modal-acceso').style.display = 'none';
+        document.getElementById('terminal-visitas').style.display = 'block';
+        document.getElementById('nombre-mostrado').innerText = nombre.toUpperCase();
+        sessionStorage.setItem('usuario_logueado', nombre);
+
+        await registrarEnBaseDeDatos(nombre);
+        actualizarContador();
+    };
+
+    async function registrarEnBaseDeDatos(nombre) {
+        if (!sessionStorage.getItem('visita_guardada_db')) {
+            try {
+                await addDoc(coleccion, {
+                    nombre_agente: nombre,
+                    fecha: serverTimestamp(), // Guarda la hora del servidor
+                    dispositivo: navigator.userAgent
+                });
+                sessionStorage.setItem('visita_guardada_db', 'true');
+            } catch (e) { console.error("Error guardando:", e); }
+        }
+    }
+
+    async function actualizarContador() {
+        try {
+            const snapshot = await getCountFromServer(coleccion);
+            document.getElementById('numero-visitas').innerText = snapshot.data().count;
+        } catch (e) { console.log("Error contando"); }
+    }
+
+    // --- 2. ABRIR BITÁCORA (VER LISTA) ---
+    window.abrirBitacora = async function() {
+        // Mostrar ventana
+        const modal = document.getElementById('modal-bitacora');
+        const lista = document.getElementById('lista-visitantes');
+        modal.style.display = 'flex';
+        lista.innerHTML = "📡 Descifrando base de datos...<br><br>";
+
+        try {
+            // Pedimos todos los datos ordenados por fecha
+            // NOTA: Si sale error en consola, es posible que Firebase pida crear un índice.
+            // Si eso pasa, simplemente quitamos el orderBy.
+            const q = query(coleccion, orderBy("fecha", "desc"));
+            const querySnapshot = await getDocs(q);
+            
+            let html = "<table style='width:100%; border-collapse: collapse;'>";
+            html += "<tr style='border-bottom: 1px dashed #0f0; text-align:left;'><th>FECHA/HORA</th><th>AGENTE</th></tr>";
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                // Convertir fecha rara de Firebase a fecha normal
+                let fechaTexto = "Desconocida";
+                if(data.fecha) {
+                    fechaTexto = new Date(data.fecha.seconds * 1000).toLocaleString();
+                }
+                
+                html += `
+                    <tr style='border-bottom: 1px solid #333;'>
+                        <td style='padding: 8px 0; color: #aaa;'>[${fechaTexto}]</td>
+                        <td style='padding: 8px 0; color: #0f0; font-weight:bold;'>${data.nombre_agente || "Anónimo"}</td>
+                    </tr>
+                `;
+            });
+            html += "</table>";
+            lista.innerHTML = html;
+
+        } catch (error) {
+            console.error(error);
+            lista.innerHTML = "⚠️ ERROR DE CONEXIÓN: " + error.message + "<br>Intenta recargar.";
+        }
+    }
+
+    // --- VERIFICAR SI YA ENTRÓ ANTES ---
+    window.onload = function() {
+        const usuarioGuardado = sessionStorage.getItem('usuario_logueado');
+        if (usuarioGuardado) {
+            document.getElementById('modal-acceso').style.display = 'none';
+            document.getElementById('terminal-visitas').style.display = 'block';
+            document.getElementById('nombre-mostrado').innerText = usuarioGuardado.toUpperCase();
+            actualizarContador();
+        }
+    };
+</script>
+
 
         </div>
     </div>
