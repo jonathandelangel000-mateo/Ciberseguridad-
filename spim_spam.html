@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam y Spim - Basura Digital</title>
+    <style>
+        /* --- ESTILOS COMPARTIDOS (Tema Oscuro) --- */
+        :root {
+            --fondo: #0f172a;
+            --tarjeta: #1e293b;
+            --texto: #e2e8f0;
+            --acento: #f59e0b;       /* Naranja Ámbar (Alerta/Basura) */
+            --spam: #ea580c;         /* Naranja oscuro */
+            --spim: #10b981;         /* Verde (tipo WhatsApp) */
+            --borde: #334155;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* --- ENCABEZADO --- */
+        h1 {
+            color: var(--acento);
+            border-bottom: 2px solid var(--acento);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .icono-grande { font-size: 2.5rem; }
+
+        /* --- INTRODUCCIÓN --- */
+        .intro-box {
+            background-color: var(--tarjeta);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid var(--borde);
+            text-align: center;
+        }
+
+        /* --- COMPARACIÓN (GRID) --- */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card-compare {
+            background-color: #172033;
+            border-radius: 15px;
+            padding: 25px;
+            position: relative;
+            border-top: 5px solid;
+            transition: 0.3s;
+        }
+
+        .card-compare:hover { transform: translateY(-5px); }
+
+        /* Estilos específicos SPAM */
+        .card-spam { border-top-color: var(--spam); }
+        .card-spam h2 { color: var(--spam); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        
+        /* Estilos específicos SPIM */
+        .card-spim { border-top-color: var(--spim); }
+        .card-spim h2 { color: var(--spim); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+
+        .definition {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            height: 60px; /* Para alinear alturas */
+        }
+
+        .example-box {
+            background-color: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #aaa;
+            border: 1px dashed #555;
+        }
+
+        /* --- SECCIÓN DE PELIGRO --- */
+        .danger-zone {
+            background-color: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--acento);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .danger-title {
+            color: var(--acento);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- CURIOSIDAD (LATA DE CARNE) --- */
+        .fun-fact {
+            background-color: var(--tarjeta);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lata-icon { font-size: 2rem; }
+
+        /* --- BOTÓN VOLVER --- */
+        .btn-volver {
+            display: inline-block;
+            background-color: var(--tarjeta);
+            color: var(--acento);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: 1px solid var(--acento);
+            transition: 0.3s;
+            margin-top: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--acento);
+            color: #000;
+            box-shadow: 0 0 15px var(--acento);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><span class="icono-grande">🗑️</span> Basura Digital</h1>
+
+        <div class="intro-box">
+            <p>
+                Recibimos miles de mensajes al día que no pedimos. A esto le llamamos "Correo o Mensajería No Deseada". 
+                No solo es molesto; es el principal vehículo para virus y estafas.
+            </p>
+        </div>
+
+        <div class="comparison-grid">
+            
+            <div class="card-compare card-spam">
+                <h2><span style="font-size:1.5rem">📧</span> SPAM</h2>
+                <div class="definition">
+                    Correo basura enviado masivamente a miles de personas sin su consentimiento.
+                </div>
+                <div class="example-box">
+                    <strong>De:</strong> Lotería Bill Gates<br>
+                    <strong>Asunto:</strong> ¡GANASTE 1 MILLÓN!<br>
+                    "Felicidades, haga clic aquí para reclamar..."
+                </div>
+                <p style="font-size:0.8rem; margin-top:10px; color:#ea580c;">*Satura tu bandeja de entrada.</p>
+            </div>
+
+            <div class="card-compare card-spim">
+                <h2><span style="font-size:1.5rem">💬</span> SPIM</h2>
+                <div class="definition">
+                    "Spam over Instant Messaging". Basura enviada por WhatsApp, Messenger, Telegram o SMS.
+                </div>
+                <div class="example-box">
+                    <strong>Número desconocido:</strong><br>
+                    "Hola, soy el gerente de Amazon. Te ofrecemos trabajo desde casa. Gana $5000 diarios. Info aquí: bit.ly/..."
+                </div>
+                <p style="font-size:0.8rem; margin-top:10px; color:#10b981;">*Invade tu privacidad directa.</p>
+            </div>
+
+        </div>
+
+        <div class="danger-zone">
+            <div class="danger-title">⚠️ ¿Por qué es peligroso?</div>
+            <p>
+                Muchos creen que solo es publicidad molesta, pero el <strong>90% del Malware</strong> entra a través de un Spam o Spim.
+            </p>
+            <ul style="margin: 0; padding-left: 20px;">
+                <li>Contienen enlaces a sitios de Phishing.</li>
+                <li>Adjuntan archivos infectados (Facturas falsas en PDF).</li>
+                <li>Buscan confirmar que tu correo/número existe para venderlo a otros.</li>
+            </ul>
+        </div>
+
+        <div class="fun-fact">
+            <div class="lata-icon">🍖</div>
+            <div>
+                <strong>Dato Curioso:</strong> El término "Spam" viene de un sketch de los comediantes Monty Python sobre una carne enlatada que se servía con todo, ¡te gustara o no!
+            </div>
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-volver">⬅ Regresar al Menú</a>
+        </center>
+    </div>
+
+</body>
+</html>
+
