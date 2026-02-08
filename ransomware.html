@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ransomware - ¡Archivos Secuestrados!</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --fondo: #0f172a;
+            --texto: #e2e8f0;
+            --rojo-alarma: #dc2626;  /* Rojo intenso */
+            --rojo-oscuro: #7f1d1d;
+            --blanco: #ffffff;
+            --amarillo: #facc15;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Fuente tipo Hacker */
+            background-color: var(--fondo);
+            color: var(--texto);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; }
+
+        /* --- TÍTULO --- */
+        h1 {
+            color: var(--rojo-alarma);
+            border-bottom: 2px solid var(--rojo-alarma);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .icono-candado { font-size: 3rem; }
+
+        /* --- SIMULACIÓN DE RANSOMWARE (LA NOTA DE RESCATE) --- */
+        .ransom-note {
+            background-color: var(--rojo-oscuro);
+            border: 4px solid var(--rojo-alarma);
+            padding: 30px;
+            border-radius: 5px;
+            color: var(--blanco);
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 0 50px rgba(220, 38, 38, 0.5); /* Resplandor rojo */
+        }
+
+        .ransom-note h2 {
+            background-color: var(--blanco);
+            color: var(--rojo-alarma);
+            display: inline-block;
+            padding: 5px 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .candado-gigante {
+            font-size: 5rem;
+            display: block;
+            margin: 10px 0;
+            animation: palpito 1.5s infinite; /* Efecto de latido */
+        }
+
+        @keyframes palpito {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .cuenta-regresiva {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--amarillo);
+            font-family: monospace;
+            border: 2px dashed var(--amarillo);
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+        }
+
+        .boton-pagar-falso {
+            background-color: #16a34a; /* Verde */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* --- CAJAS DE INFORMACIÓN --- */
+        .info-box {
+            background-color: #1e293b;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--amarillo);
+            font-family: 'Segoe UI', sans-serif; /* Volvemos a fuente normal para leer */
+        }
+
+        .defense-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .defense-list li {
+            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 3px solid #10b981; /* Verde seguridad */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- BOTÓN VOLVER --- */
+        .btn-volver {
+            display: inline-block;
+            background-color: #1e293b;
+            color: var(--rojo-alarma);
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            border: 1px solid var(--rojo-alarma);
+            transition: 0.3s;
+            margin-top: 30px;
+            font-weight: bold;
+            font-family: 'Segoe UI', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--rojo-alarma);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <h1><span class="icono-candado">🔒</span> Acceso Denegado</h1>
+
+        <div class="info-box">
+            <p>
+                <strong>El Ransomware</strong> es el "Secuestro Digital". Un programa malicioso encripta (cierra con llave) todos tus archivos, fotos y documentos. Para recuperarlos, los criminales exigen un pago (rescate), usualmente en Criptomonedas.
+            </p>
+        </div>
+
+        <div class="ransom-note">
+            <span class="candado-gigante">🔐</span>
+            <h2>¡Tus archivos han sido encriptados!</h2>
+            <p>
+                Todos tus documentos, fotos y bases de datos han sido bloqueados con una clave militar.
+                Nadie puede recuperarlos excepto nosotros.
+            </p>
+            <p>Tienes <strong>24 horas</strong> para realizar el pago o tus archivos serán eliminados para siempre.</p>
+            
+            <div class="cuenta-regresiva">23:59:59</div>
+            
+            <p style="font-size: 0.8rem; margin-top: 20px;">
+                Precio del rescate: <strong>$500 USD en Bitcoin</strong>
+            </p>
+            <span class="boton-pagar-falso">Realizar Pago (Simulado)</span>
+        </div>
+
+        <div class="info-box" style="border-left-color: #10b981;">
+            <h3 style="color: #10b981; margin-top: 0;">🛡️ La Regla de Oro: BACKUPS</h3>
+            <p>La única forma 100% efectiva de vencer al Ransomware es tener copias de seguridad.</p>
+            
+            <ul class="defense-list">
+                <li>
+                    <span>💾</span>
+                    <strong>Respalda tus datos:</strong> Ten copias en un disco duro externo desconectado o en la nube.
+                </li>
+                <li>
+                    <span>🚫</span>
+                    <strong>NUNCA pagues:</strong> Pagar no garantiza que te devuelvan tus archivos y financia a los criminales.
+                </li>
+                <li>
+                    <span>🔄</span>
+                    <strong>Actualiza todo:</strong> El Ransomware suele entrar por fallos de seguridad viejos en Windows.
+                </li>
+            </ul>
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-volver">⬅ Escapar al Menú</a>
+        </center>
+    </div>
+
+</body>
+</html>
+
