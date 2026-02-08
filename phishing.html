@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing - Amenaza Detectada</title>
+    <style>
+        /* --- ESTILOS COMPARTIDOS (Mismo tema oscuro) --- */
+        :root {
+            --fondo: #0f172a;
+            --tarjeta: #1e293b;
+            --texto: #e2e8f0;
+            --acento: #38bdf8;
+            --peligro: #ef4444;
+            --alerta: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- ENCABEZADO DE LA PÁGINA --- */
+        h1 {
+            color: var(--acento);
+            border-bottom: 2px solid var(--acento);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icono-grande { font-size: 2.5rem; }
+
+        /* --- CAJAS DE INFORMACIÓN --- */
+        .info-box {
+            background-color: var(--tarjeta);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--acento);
+        }
+
+        /* --- SIMULADOR DE CORREO FALSO --- */
+        .fake-email {
+            background-color: #fff; /* Fondo blanco como correo real */
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed var(--peligro); /* Borde rojo de peligro */
+            position: relative;
+            margin: 30px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .fake-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .fake-red-flag {
+            background-color: rgba(239, 68, 68, 0.2);
+            border: 1px solid var(--peligro);
+            color: #b91c1c;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+        }
+
+        .fake-button {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 15px;
+            pointer-events: none; /* Para que no funcione el clic */
+        }
+
+        /* --- BOTÓN DE VOLVER --- */
+        .btn-volver {
+            display: inline-block;
+            background-color: var(--tarjeta);
+            color: var(--acento);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid var(--acento);
+            transition: 0.3s;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .btn-volver:hover {
+            background-color: var(--acento);
+            color: var(--fondo);
+        }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1><span class="icono-grande">🎣</span> ¿Qué es el Phishing?</h1>
+
+        <div class="info-box">
+            <p>
+                El <strong>Phishing</strong> (pesca de datos) es una técnica donde los ciberdelincuentes se hacen pasar por empresas confiables (como tu banco, Netflix o la universidad) para engañarte y que les entregues tus contraseñas o números de tarjeta.
+            </p>
+        </div>
+
+        <h2 style="color: var(--peligro);">⚠️ Anatomía de una Estafa</h2>
+        <p>Analiza este correo falso. Hemos marcado en rojo las señales de peligro:</p>
+
+        <div class="fake-email">
+            <div class="fake-header">
+                <strong>De:</strong> Soporte Técnico &lt;seguridad@gmai1-banco.com&gt; <span class="fake-red-flag">¡Mira el remitente!</span><br>
+                <strong>Para:</strong> usuario@correo.com<br>
+                <strong>Asunto:</strong> URGENTE: TU CUENTA SERÁ BLOQUEADA <span class="fake-red-flag">Sentido de urgencia</span>
+            </div>
+
+            <p>Estimado cliente,</p>
+            <p>Hemos detectado una actividad sospechosa en su cuenta. Si no verifica sus datos en las próximas <strong>2 horas</strong>, perderá el acceso para siempre.</p>
+            
+            <p>Por favor, ingrese sus datos aquí:</p>
+            
+            <span class="fake-button">VERIFICAR AHORA</span> <span class="fake-red-flag">Enlace malicioso</span>
+            
+            <p style="font-size: 0.8rem; color: #666; margin-top: 20px;">
+                Gracias por su atensión. <span class="fake-red-flag">Mala ortografía</span>
+            </p>
+        </div>
+
+        <div class="info-box" style="border-left-color: var(--alerta);">
+            <h3>🛡️ ¿Cómo protegerte?</h3>
+            <ul>
+                <li><strong>Verifica el remitente:</strong> Los bancos nunca usan correos gratuitos (como @gmail o @hotmail).</li>
+                <li><strong>No te apresures:</strong> Los estafadores siempre te dirán que es "URGENTE" para que no pienses.</li>
+                <li><strong>Duda de los enlaces:</strong> Si pasas el mouse por encima del botón (sin hacer clic), verás que la dirección real es extraña.</li>
+                <li><strong>Nunca des contraseñas por correo:</strong> Ninguna empresa seria te pedirá tu clave por email.</li>
+            </ul>
+        </div>
+
+        <center>
+            <a href="index.html" class="btn-volver">⬅ Volver al Menú Principal</a>
+        </center>
+    </div>
+
+</body>
+</html>
+
